@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.button-auth {
-    @apply inline-flex items-center px-3 py-2 text-sm font-medium text-black transition border border-transparent gap-x-2 rounded-xl bg-lime-400 hover:bg-lime-500 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-lime-500;
+h1 {
+    @apply text-4xl font-bold;
+}
+h2 {
+    @apply text-2xl font-semibold text-gray-900 dark:text-white;
 }
 
 .input {
@@ -12,4 +15,8 @@
 
 .button-primary {
     @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+
+.button-auth {
+    @apply inline-flex items-center px-3 py-2 text-sm font-medium text-black transition border border-transparent gap-x-2 rounded-xl bg-lime-400 hover:bg-lime-500 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-lime-500;
 }

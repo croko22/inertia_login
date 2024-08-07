@@ -3,18 +3,17 @@ import { Link } from "@inertiajs/react";
 export default function Layout({ children }) {
     return (
         <>
-            <header class="z-50 flex flex-wrap w-full md:justify-start md:flex-nowrap py-7">
+            <header className="z-50 flex flex-wrap w-full md:justify-start md:flex-nowrap py-7">
                 <nav
-                    class="relative flex flex-wrap items-center w-full px-4 mx-auto max-w-7xl md:grid md:grid-cols-12 basis-full md:px-6"
+                    className="relative flex flex-wrap items-center w-full px-4 mx-auto max-w-7xl md:grid md:grid-cols-12 basis-full md:px-6"
                     aria-label="Global"
                 >
-                    <div class="md:col-span-3">
+                    <div className="md:col-span-3">
                         <Link
-                            class="flex items-center text-xl font-semibold rounded-xl focus:outline-none focus:opacity-80"
+                            className="flex items-center text-xl font-semibold rounded-xl focus:outline-none focus:opacity-80"
                             href="/"
                         >
                             <svg
-                                class="w-10 h-auto"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -33,14 +32,14 @@ export default function Layout({ children }) {
                         </Link>
                     </div>
 
-                    <div class="flex items-center py-1 gap-x-2 ms-auto md:ps-6 md:order-3 md:col-span-3">
-                        <Link href="/login" class="button-auth">
+                    <div className="flex items-center py-1 gap-x-2 ms-auto md:ps-6 md:order-3 md:col-span-3">
+                        <Link href="/login" className="button-auth">
                             Log in
                         </Link>
                     </div>
 
-                    <div class="row md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
-                        <div class="flex flex-col mt-5 gap-y-4 gap-x-0 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0"></div>
+                    <div className="row md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
+                        <div className="flex flex-col mt-5 gap-y-4 gap-x-0 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0"></div>
                     </div>
                 </nav>
             </header>
