@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -10,10 +11,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
+Route::middleware('auth')->get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
 Route::get('/login', function () {
     return Inertia::render('Auth/Login');
-})->name('login');
+})->name('login')->middleware('guest');
+
+Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');

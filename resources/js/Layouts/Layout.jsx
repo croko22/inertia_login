@@ -1,6 +1,20 @@
 import { Link } from "@inertiajs/react";
+import { router } from "@inertiajs/react";
 
 export default function Layout({ children }) {
+    const logout = () => {
+        // axios
+        //     .post("http://localhost:8000/api/v1/logout")
+        //     .then((response) => {
+        //         Cookies.remove("token");
+        //         window.location = "/login";
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+        router.post("/logout");
+    };
+
     return (
         <>
             <header className="z-50 flex flex-wrap w-full md:justify-start md:flex-nowrap py-7">
@@ -36,6 +50,10 @@ export default function Layout({ children }) {
                         <Link href="/login" className="button-auth">
                             Log in
                         </Link>
+
+                        <button className="button-auth" onClick={logout}>
+                            Log out
+                        </button>
                     </div>
 
                     <div className="row md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">

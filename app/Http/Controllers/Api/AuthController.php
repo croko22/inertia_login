@@ -19,7 +19,6 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'The provided credentials are incorrect.'
             ], Response::HTTP_UNAUTHORIZED);
-
         }
 
         return response()->json([
@@ -34,8 +33,12 @@ class AuthController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function hello(): JsonResponse
+    public function logout(): JsonResponse
     {
-        return response()->json(['message' => 'Hello World!']);
+        auth()->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Tokens Revoked'
+        ], Response::HTTP_OK);
     }
 }
