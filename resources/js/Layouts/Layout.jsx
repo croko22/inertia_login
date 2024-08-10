@@ -1,17 +1,19 @@
 import { Link } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function Layout({ children }) {
     const logout = () => {
-        // axios
-        //     .post("http://localhost:8000/api/v1/logout")
-        //     .then((response) => {
-        //         Cookies.remove("token");
-        //         window.location = "/login";
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+        axios
+            .post("http://localhost:8000/api/v1/logout")
+            .then((response) => {
+                Cookies.remove("token");
+                window.location = "/login";
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         router.post("/logout");
     };
 

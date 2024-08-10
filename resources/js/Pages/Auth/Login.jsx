@@ -15,24 +15,23 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            // await axios.get("http://localhost:8000/sanctum/csrf-cookie");
+            const response = await axios.post(
+                "http://localhost:8000/api/v1/login",
+                data,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": Cookies.get("XSRF-TOKEN"),
+                    },
+                }
+            );
 
-            // const response = await axios.post(
-            //     "http://localhost:8000/api/v1/login",
-            //     data,
-            //     {
-            //         headers: {
-            //             "Content-Type": "application/json",
-            //             "X-CSRF-TOKEN": Cookies.get("XSRF-TOKEN"),
-            //         },
-            //     }
-            // );
-
-            // const result = response.data;
-            // Cookies.set("token", result.data.token, { expires: 7 });
-            // axios.defaults.headers.common[
-            //     "Authorization"
-            // ] = `Bearer ${result.data.token}`;
+            console.log(response.data);
+            const result = response.data;
+            Cookies.set("token", result.data.token, { expires: 7 });
+            axios.defaults.headers.common[
+                "Authorization"
+            ] = `Bearer ${result.data.token}`;
 
             post("/login");
         } catch (error) {
