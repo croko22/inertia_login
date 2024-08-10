@@ -41,4 +41,21 @@ class AuthController extends Controller
             'message' => 'Tokens Revoked'
         ], Response::HTTP_OK);
     }
+
+    public function update(): JsonResponse
+    {
+        $user = auth()->user();
+
+        $user->update(request()->only('name', 'email'));
+
+        return response()->json([
+            'data' => [
+                'attributes' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email
+                ]
+            ]
+        ], Response::HTTP_OK);
+    }
 }
