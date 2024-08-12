@@ -15,16 +15,12 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(
-                "http://localhost:8000/api/v1/login",
-                data,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": Cookies.get("XSRF-TOKEN"),
-                    },
-                }
-            );
+            const response = await axios.post("login", data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": Cookies.get("XSRF-TOKEN"),
+                },
+            });
 
             console.log(response.data);
             const result = response.data;
