@@ -1,12 +1,14 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 export default function Layout({ children }) {
+    const { auth, api } = usePage().props;
+    axios.defaults.baseURL = api;
     const logout = () => {
         axios
-            .post("http://localhost:8000/api/v1/logout")
+            .post("/logout")
             .then((response) => {
                 Cookies.remove("token");
                 window.location = "/login";
@@ -49,13 +51,15 @@ export default function Layout({ children }) {
                     </div>
 
                     <div className="flex items-center py-1 gap-x-2 ms-auto md:ps-6 md:order-3 md:col-span-3">
-                        <Link href="/login" className="button-auth">
-                            Log in
-                        </Link>
-
-                        <button className="button-auth" onClick={logout}>
-                            Log out
-                        </button>
+                        {auth.user !== null ? (
+                            <button className="button-auth" onClick={logout}>
+                                Log out
+                            </button>
+                        ) : (
+                            <Link href="/login" className="button-auth">
+                                Log in
+                            </Link>
+                        )}
                     </div>
 
                     <div className="row md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
